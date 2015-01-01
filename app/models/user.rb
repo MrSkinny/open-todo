@@ -16,6 +16,10 @@ class User < ActiveRecord::Base
     else false
     end
   end
+      
+  def full_name
+    self.username
+  end
 
   private
 

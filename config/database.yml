@@ -1,23 +1,26 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: todo_development
+  database: open-todo-dev
   pool: 5
-  username: 
+  host: localhost
+  username: action
   password:
 
 test:
   adapter: postgresql
   encoding: unicode
-  database: todo_test
+  database: open-todo-test
   pool: 5
-  username: 
+  host: localhost
+  username: action
   password:
 
 production:
   adapter: postgresql
   encoding: unicode
-  database: todo_production
+  database: open-todo-prod
   pool: 5
-  username: 
+  host: localhost
+  username: action
   password:
