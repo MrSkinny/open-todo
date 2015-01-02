@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Api::UsersController do
+describe Api::UsersController, type: :controller do
 
   before do
     User.destroy_all
@@ -14,17 +14,18 @@ describe Api::UsersController do
         .to change{ User.where(params['new_user']).count }
         .by 1
 
-      JSON.parse(response.body).should == params['new_user']
+      expect(JSON.parse(response.body)).to eq(params['new_user'])
     end
 
     it "returns an error when not given a password" do
-      post :create, { username: 'testuser' }
-      response.should be_error
+      post :create, { 'new_user' => { username: 'testuser' } }
+      expect(response.code).to eq("422")
     end
 
     it "returns an error when not given a username" do
-      post :create, { password: 'testpass' }
-      response.should be_error
+      post :create, { 'new_user' => { password: 'testpass' } }
+      expect(response.code).to eq("422")
+      
     end
   end
 
@@ -37,7 +38,7 @@ describe Api::UsersController do
     it "lists all usernames and ids" do
       get :index
 
-      JSON.parse(response.body).should == 
+      expect(JSON.parse(response.body)).to eq( 
         { 'users' => 
           [
             { 'id' => 1, 'username' => 'name1' },
@@ -45,6 +46,7 @@ describe Api::UsersController do
             { 'id' => 3, 'username' => 'name3' }
           ]
         }
+      )
     end
   end
 end

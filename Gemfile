@@ -5,14 +5,15 @@ gem 'rails', '4.0.3'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
-gem 'sass-rails', '~> 4.0.0'
-gem 'bootstrap'
 gem 'bootstrap-sass'
+gem 'sass-rails'
+gem 'autoprefixer-rails'
 gem 'haml'
 gem 'haml-rails'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'active_model_serializers'
+gem 'rest-client'
 
 group :development, :test do
   gem 'pry'
